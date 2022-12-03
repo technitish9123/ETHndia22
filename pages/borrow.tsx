@@ -42,10 +42,9 @@ const Borrow = (props: Props) => {
       })();
   }, []);
 
-  const selectedNft = (nftData: any) => {
-    // setNftSelected((prevstate) => ({ ...prevstate, nftData }));
-    // console.log("first");
-  };
+  // const selectedNft = (nftData: any) => {
+  //   setNftSelected((prevState) => {...prevState,  nftData });
+  // };
 
   // console.log(nftSelectedd);
   // console.log(nftSelected);
@@ -130,7 +129,8 @@ const Borrow = (props: Props) => {
                 contentClassName="w-72 h-72"
                 Image_Uri={nftData?.file_url}
                 nftData={nftData}
-                selectedNft={selectedNft}
+                // selectedNft={selectedNft}
+                setNftSelected={setNftSelected}
               />
             </div>
           ))}

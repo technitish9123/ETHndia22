@@ -9,6 +9,7 @@ type CardsProps = {
   Image_Uri: string;
   nftData: any;
   selectedNft: any;
+  setNftSelected: any;
 };
 
 const cards: React.FC<CardsProps> = ({
@@ -16,15 +17,15 @@ const cards: React.FC<CardsProps> = ({
   Image_Uri,
   nftData,
   selectedNft,
+  setNftSelected,
 }) => {
-  const nftSelected: any[] = [];
-  const SelectedNft = () => {
-    console.log(nftSelected);
-    nftSelected.push(nftData);
-    console.log(nftSelected);
+  // const nftSelected: any[] = [];
+  // const SelectedNft = () => {
+  //   console.log(nftSelected);
+  //   nftSelected.push(nftData);
+  //   console.log(nftSelected);
 
-    localStorage.setItem("selectedNFT", JSON.stringify(nftSelected));
-  };
+  // };
 
   // eslint-disable-next-line react-hooks/rules-of-hooks
   // const { selectedNFT, setSelectedNFT } = useContext(GlobalContext);
@@ -38,7 +39,10 @@ const cards: React.FC<CardsProps> = ({
         type="checkbox"
         value=""
         id="flexCheckDefault"
-        onClick={() => SelectedNft()}
+        // onClick={}
+        onChange={(e) =>
+          setNftSelected({...user, user_name: e.target.value });
+        }
       />
       <img
         src={Image_Uri ?? "/svg/1.png"}
