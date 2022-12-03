@@ -17,8 +17,7 @@ const Borrow = (props: Props) => {
   const [NftMetdata, setNftMetdata] = useState<any>();
   const [submitStatus, setSubmitStatus] = useState<boolean>(false);
   const { address: account_address, connector, isConnected } = useAccount();
-  const [nftSelectedd, setNftSelected] = useState<[]>([]);
-  const nftSelected: any[] = [];
+  const [nftSelectedd, setNftSelected] = useState<any[]>([]);
 
   useEffect(() => {
     if (isConnected)
@@ -42,12 +41,12 @@ const Borrow = (props: Props) => {
       })();
   }, []);
 
-  // const selectedNft = (nftData: any) => {
-  //   setNftSelected((prevState) => {...prevState,  nftData });
-  // };
+  const selectNFT = (nftData: any) => {
+    setNftSelected([...nftSelectedd, nftData]);
+  };
 
-  // console.log(nftSelectedd);
-  // console.log(nftSelected);
+  console.log({ nftSelectedd });
+
   return (
     <div className="bg-raisin-black flex flex-col items-center h-full px-3 min-h-[100vh] pb-8">
       <div className=" w-full flex p-6  justify-end items-center content-center  ">
@@ -120,8 +119,8 @@ const Borrow = (props: Props) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col  w-11/12 min-h-64 bg-terra-cotta rounded-md px-8 py-4 mt-12 justify-center">
-        <div className="flex  text-hash-light  items-center justify-around gap-36 pt-8">
+      <div className="flex flex-col  w-11/12 min-h-64 bg-terra-cotta rounded-md px-8 py-4 mt-12 justify-center ">
+        <div className="flex  text-hash-light  items-center justify-around gap-36 pt-8 flex-wrap">
           {" "}
           {NftMetdata?.nfts?.map((nftData: any) => (
             <div key={nftData?.description} className="">
@@ -129,8 +128,7 @@ const Borrow = (props: Props) => {
                 contentClassName="w-72 h-72"
                 Image_Uri={nftData?.file_url}
                 nftData={nftData}
-                // selectedNft={selectedNft}
-                setNftSelected={setNftSelected}
+                selectNFT={selectNFT}
               />
             </div>
           ))}
