@@ -16,6 +16,7 @@ const Dashboard = (props: Props) => {
   const { address: account_address, connector, isConnected } = useAccount();
   const { data: signer, isError, isLoading } = useSigner();
   const [dropdown, setDropdown] = useState<boolean>(false);
+  const [nftClicked, setNftClicked] = useState<boolean>(false);
 
   // useEffect(() => {
   //   (async () => {
@@ -82,10 +83,20 @@ const Dashboard = (props: Props) => {
   //     }
   //   })();
   // }, [address, contract]);
+
   const OPTIONS = useMemo<React.ReactNode[]>(
     () => [<div key={1}>hello</div>, <div key={2}>hello</div>],
     []
   );
+
+  const NFTdataComponent = () => {
+    return (
+      <div className=" grid grid-cols-2">
+        <div className="bg-hash-light"></div>
+        <div></div>
+      </div>
+    );
+  };
 
   return (
     <div className="bg-raisin-black flex flex-col items-center h-full px-1 min-h-[100vh]">
@@ -120,7 +131,20 @@ const Dashboard = (props: Props) => {
         </div>
       </div>
 
-      <div className=" flex justify-center items-center content-center  flex-wrap gap-12 pt-14"></div>
+      <div className=" flex justify-center items-center content-center  flex-wrap gap-12 pt-14">
+        {!nftClicked ? (
+          <div
+            className="w-72 h-72 bg-white"
+            onClick={() => {
+              setNftClicked(true);
+            }}
+          >
+            hiashfch
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 };
