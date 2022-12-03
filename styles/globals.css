@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/Poppins-Light.ttf") format("truetype");
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "poppins";
+    src: url("/fonts/Poppins-Medium.ttf") format("truetype");
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/Poppins-SemiBold.ttf") format("truetype");
+    font-weight: 600;
+  }
+
+  @font-face {
+    font-family: "Poppins";
+    src: url("/fonts/Poppins-Bold.ttf") format("truetype");
+    font-weight: 700;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body,
+  #__next {
+    @apply p-0 m-0 w-full h-full font-poppins;
+  }
+
+  * {
+    box-sizing: border-box;
+    -webkit-appearance: none;
+  }
+
+  input,
+  button,
+  a,
+  textarea {
+    outline: none;
+  }
+
+  .bg-hash-red-gradient {
+    /* @apply bg-gradient-to-r from-vivid-tangerine to-coyote-brown; */
+    @apply bg-gradient-to-r from-terra-cotta to-hash-red;
+  }
+
+  .bg-hash-red-gradient-alt {
+    @apply bg-gradient-to-r from-vivid-tangerine to-coyote-brown;
+  }
+
+  .bg-auth-loading {
+    background: linear-gradient(
+      90deg,
+      rgba(102, 102, 102, 0.86) 2.01%,
+      #1e2128 97.7%
+    );
+  }
+  .bg-signup-auth-loading {
+    background: linear-gradient(90.08deg, #f1f1f1 2.01%, #dddddd 87.7%);
+  }
+
+  .bg-messages-loading {
+    background: linear-gradient(
+      90deg,
+      rgb(224 221 221 / 86%) 80.01%,
+      #dadada 100%
+    );
+  }
+
+  .bg-full {
+    background-size: 100% 100%;
+  }
+
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #979eb5 #ffffff;
+  }
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #faf9f8;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #979eb5;
+    border-radius: 0px;
+    border: 3px solid #fbfbfb;
+  }
+
+  .scrollbar-gutter-stable {
+    scrollbar-gutter: stable;
+  }
+
+  .hashmail-text-underline {
+    @apply relative after:absolute after:-bottom-1 after:left-0 after:w-full after:h-0.5;
+  }
+}
+
+.ql-editor {
+  @apply font-poppins;
+}
+
+.message-preview {
+  @apply text-sm;
+}
+
+.message-preview a {
+  @apply underline text-blue-700;
+}
+
+.no-scroll-bar::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
