@@ -39,10 +39,7 @@ const cards: React.FC<CardsProps> = ({
         type="checkbox"
         value=""
         id="flexCheckDefault"
-        // onClick={}
-        onChange={(e) =>
-          setNftSelected({...user, user_name: e.target.value });
-        }
+        onClick={() => selectedNft(nftData)}
       />
       <img
         src={Image_Uri ?? "/svg/1.png"}
