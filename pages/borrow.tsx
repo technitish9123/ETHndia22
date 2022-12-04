@@ -4,9 +4,11 @@ import { Cards, Dropdown } from "components/shared";
 import Link from "next/link";
 import React, { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { NFTPORT } from "utils/constants/constants";
+import { CONTRACT_ADDRESS, NFTPORT } from "utils/constants/constants";
 import { useAccount, useSigner } from "wagmi";
 import moment from "moment";
+import { ethers } from "ethers";
+import { functions } from "utils/functions";
 
 type Props = {};
 
@@ -25,14 +27,11 @@ const Borrow = (props: Props) => {
   const [date, setDate] = useState<any>();
   const [interest, setInterest] = useState<any>();
   const [simpleInterest, setSimpleInterest] = useState<any>();
+  const { data: signer, isError, isLoading } = useSigner();
 
   const currentDate = moment().unix();
 
-  const d = moment(date).unix();
-  console.log(currentDate);
-  console.log(d);
-  const dd = (d - currentDate) / 1000 / 60 / 60 / 24;
-  console.log(dd);
+  const { P2P, Approve } = functions();
 
   useEffect(() => {
     if (isConnected)
@@ -59,11 +58,11 @@ const Borrow = (props: Props) => {
   const selectNFT = (nftData: any) => {
     setNftSelected([...nftSelected, nftData]);
   };
-  console.log(interest);
-  const InterestFunction = () => {
-    const calc = ((ammount * interest * dd) / 100).toFixed(2);
-    setSimpleInterest(calc);
-  };
+  // const InterestFunction = () => {
+  //   const calc = ((ammount * interest * dd) / 100).toFixed(2);
+  //   setSimpleInterest(calc);
+  // };
+  console.log(NftMetdata);
 
   return (
     <div className="bg-raisin-black flex flex-col items-center h-full px-3 min-h-[100vh] pb-8">
@@ -155,9 +154,8 @@ const Borrow = (props: Props) => {
         <div className="pl-16">
           <button
             className="min-w-48 rounded px-3 py-1.5  text-xl bg-raisin-black text-hash-light"
-            onClick={() => InterestFunction()}
+            // onClick={() => InterestFunction()}
           >
-            {" "}
             Calculate
           </button>
         </div>
@@ -195,7 +193,7 @@ const Borrow = (props: Props) => {
                     <button
                       className="px-2 py-4 absolute top-1/2 left-24 text-white border-2 border-manatee flex h-4 items-center"
                       onClick={() => {
-                        console.log("hello");
+                        Approve(data?.contract_address, data?.token_id);
                       }}
                     >
                       Approve

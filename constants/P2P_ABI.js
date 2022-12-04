@@ -1,4 +1,4 @@
-export const ABI = [
+export const P2P_ABI = [
   { inputs: [], stateMutability: "nonpayable", type: "constructor" },
   {
     anonymous: false,

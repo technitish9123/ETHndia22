@@ -1,6 +1,4 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-import { ABI } from "constants/abi";
-import { CONTRACT_ADDRESS } from "constants/contractAddress";
 import { ethers } from "ethers";
 import Link from "next/link";
 import React, { useEffect, useState, useMemo } from "react";
